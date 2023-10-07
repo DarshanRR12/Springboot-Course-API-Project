@@ -11,7 +11,7 @@ import java.util.Optional;
 public class CourseController {
     @Autowired
     private CourseService courseService;
-    @GetMapping("/topics/{TopicId}/courses")
+    @GetMapping("/topics/{id}/courses")
     public List<Course> getAllTopics(@PathVariable String id){
         return courseService.getAllCourses(id);
     }
@@ -20,8 +20,8 @@ public class CourseController {
         return courseService.getCourse(id);
     }
     @PostMapping("/topics/{topicsId}/courses")
-    public void addTopic(@RequestBody Course course, @PathVariable String topicId){
-        course.setTopic(new Topic(topicId, "", ""));
+    public void addTopic(@RequestBody Course course, @PathVariable String topicsId){
+        course.setTopic(new Topic(topicsId, "", ""));
         courseService.addCourse(course);
     }
     @RequestMapping(method = RequestMethod.PUT, value = "/topics/{topicId}/courses/{id}")
